@@ -1,4 +1,4 @@
-# Project 1
+# Books app
 
 Web Programming with Python and JavaScript
 
