@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+</li>
+<li class="nav-item  active">
+    <a class="nav-link" href="{{ url_for('books')}}">Books<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="books-middle-container">
+    <div class="books-img-container">
+        <img class="book-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc2.peakpx.com%2Fwallpaper%2F89%2F301%2F225%2Fmagnifying-glass-magnified-magnifying-wallpaper.jpg&f=1&nofb=1" alt="Beautiful Place" />
+        <form action="{{ url_for('search') }}" method="get">
+            <div class="input-group mb-3 ui-widget">
+              <input type="text" class="form-control" id="autocomplete" placeholder="Search Book" aria-label="" aria-describedby="basic-addon1" name="book">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+              </div>
+            </div>
+        </form>
+    </div>
+    {% if books|length > 0%}
+    <h2 class="search-text">Search results:</h2>
+    <div class="list-group">
+        {% for book in books %}
+            <a href="{{ url_for('bookinfo', isbn=book.isbn) }}"  class="list-group-item list-group-item-action">{{ book.title }}</a>
+        {% endfor %}
+    </div>
+    {% elif empty %}
+        <div class="alert alert-danger" id="no-book" role="alert">
+            No book matches the given criteria, try again
+        </div>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- autocomplete functie d.m.v. jQuery en AJAX -->
+<script type="text/javascript">
+$(function() {
+    $("#autocomplete").autocomplete({
+        source:function(request, response) {
+            $.getJSON("{{url_for('autocomplete')}}",{
+                b_query: request.term, // In flask, "b_query" zal het argument zijn om met request.args op te zoeken
+            }, function(data) {
+                response(data.matching_results); // Hier wordt de data van matching_results opgehaald die vanuit Flask gejsonifyd wordt
+            });
+        },
+        minLength: 2,
+        select: function(event, ui) {
+            console.log(ui.item.value); // Dit zorgt ervoor dat de waarden van de query's in de console gelogged worden!
+        }
+    });
+})
+</script>
+{% endblock %}

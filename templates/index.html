@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+
+{% block header %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('index')}}">Home<span class="sr-only">(current)</span></a>
+</li>
+{% if not username %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login')}}">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('register')}}">Register</a>
+    </li>
+{%endif %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+</li>
+{% if username %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('books')}}">Books</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+    </li>
+{%endif %}
+{% endblock %}
+
+{% block body %}
+<div class="middle-container">
+    <img class="home-img" src="https://images5.alphacoders.com/808/808254.jpg" alt="Beautiful Place" />
+    <div id="eigen_table" class="table table-sm">
+        <p>Excellent service at RentBooks:</p>
+        <table class="table table-borderless table-dark">
+            <thead>
+                <tr class="table_headers">
+                    <th></th>
+                    <th scope="col">Buy</th>
+                    <th scope="col">Rent</th>
+                    <th scope="col">Store</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Books</th>
+                    <td><img class= "check" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png"></td>
+                    <td><img class= "check" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png"></td>
+                    <td><img class= "uncheck"src="http://www.myiconfinder.com/uploads/iconsets/256-256-ec140ce32ea8619e2b1dce4fad3b0d48-cross.png"></td>
+                </tr>
+                <tr>
+                    <th>E-Books</th>
+                    <td><img class= "check" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png"></td>
+                    <td><img class= "warning"src="https://icon-library.net/images/warning-icon-svg/warning-icon-svg-10.jpg"></td>
+                    <td><img class= "check" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png"></td>
+                </tr>
+                <tr>
+                    <th>Papers</th>
+                    <td><img class= "check" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png"></td>
+                    <td><img class= "warning"src="https://icon-library.net/images/warning-icon-svg/warning-icon-svg-10.jpg"></td>
+                    <td><img class= "warning"src="https://icon-library.net/images/warning-icon-svg/warning-icon-svg-10.jpg"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% if not username %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div id="last-col" class="col">
+                <img src="https://www.nowcreativegroup.com/wp-content/uploads/2015/06/Now-Startup-Logo-Clear-Blue-Smaller1.png">
+            </div>
+            <div class="col">
+                <a href="{{ url_for('register')}}"><button type="button" class="btn btn-outline-primary">Register</button></a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endif %}
+{% endblock %}

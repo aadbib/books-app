@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+</li>
+{% if username is none %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login')}}">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('register')}}">Register</a>
+    </li>
+{%endif %}
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('contact')}}">Contact<span class="sr-only">(current)</span></a>
+</li>
+{% if username is not none %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('books')}}">Books</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+    </li>
+{%endif %}
+{% endblock %}
+
+{% block body %}
+<div class="contact-container">
+    <div class="card">
+        <img src="https://bernardmarr.com/img/Measuring%20Staff%20Satisfaction%207%20Reasons%20Why%20Your%20Staff%20Survey%20Is%20Not%20Giving%20You%20Anything%20Useful.png" class="card-img-top" alt="Staff">
+        <div class="card-body">
+            <h5 class="card-title">BestBooks B.V.</h5>
+            <p class="card-text">Your best book supplier on the web</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Postcode:</b> 7483 DG Amsterdam</li>
+            <li class="list-group-item"><b>Adres:</b> Science Park</li>
+            <li class="list-group-item"><b>Telefoon:</b> 0612345678</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

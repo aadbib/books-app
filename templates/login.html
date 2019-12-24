@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{ url_for('login')}}">Login<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('register')}}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+</li>
+{% endblock %}
+
+{% block body %}
+{% if success %}
+    <div class="alert alert-success" role="alert">
+      {{ success }}
+    </div>
+{% elif error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+{% elif logout %}
+    <div class="alert alert-info" role="alert">
+        {{ logout }}
+    </div>
+{% endif %}
+<div class="login-container">
+    <div class="login">
+        <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+        <form class="needs-validation" action="{{ url_for('auth')}}" method="post" novalidate>
+            <h2>Log-in:</h2>
+            <!-- http://getbootstrap.com/docs/4.1/components/forms/ : Custom styles -->
+            <div  class="form-group login_creds">
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" required><br>
+            </div>
+            <div class="form-group login_creds">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required><br>
+            </div>
+
+            <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+            <button class="btn btn-primary" type="submit">Login</button>
+
+        </form>
+    </div>
+</div>
+
+    <!-- https://getbootstrap.com/docs/4.1/components/forms/#validation -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
+{% endblock %}

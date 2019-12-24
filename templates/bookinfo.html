@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+</li>
+<li class="nav-item  active">
+    <a class="nav-link" href="{{ url_for('books')}}">Books<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('logout')}}">Logout</a>
+</li>
+{% endblock %}
+
+{% block body %}
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+{% elif success %}
+    <div class="alert alert-success" role="alert">
+        {{ success }}
+    </div>
+{% endif %}
+<div class="bookinfo-container">
+    <div id="bookinfo" class="table table-sm">
+        <table class="table table-bordered">
+            {% for key in res %}
+            <tr>
+                <td class="table-key">{{ key }}</td>
+                <td class="table-value">{{ res[key] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="rating-container">
+    <h2>Rate this book:</h2>
+    <form action="{{ url_for('reviews') }}" method="POST" id="usrform">
+        <div class="field_container">
+            <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+            </fieldset>
+            <div class="col-lg-6 textarea">
+                <div class="form-group">
+                    <label class="label_review">Post a review:</label>
+                    <textarea class="form-control" rows="3" name="textarea"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" name="isbn" value="{{ res['isbn'] }}">Submit</button>
+    </form>
+</div>
+{% if reviews|length > 0%}
+<div class="reviews-container">
+    <div id="bookreviews" class="table table-sm">
+        <table class="table table-bordered">
+            <th>User:</th>
+            <th>Review:</th>
+            {% for review in reviews %}
+            <tr>
+                <td class="table-key">{{ review.username }}</td>
+                <td class="table-value">{{ review.review }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

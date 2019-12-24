@@ -1,0 +1,506 @@
+$text_align: center;
+$center_margin: auto;
+$rel_position: relative;
+
+%aligning {
+    text-align: $text_align
+}
+
+%width_icons {
+    width: 1.5em;
+}
+
+nav img {
+    position: $rel_position;
+    width: 3.5em;
+    left: 3%;
+}
+
+#eigen_table {
+    width: 50%;
+    height: 40vh;
+    position: $rel_position;
+    float: left;
+    margin-left: 10%;
+    bottom: 78%;
+}
+
+.table_headers {
+    @extend %aligning;
+}
+
+#eigen_table tr td {
+    @extend %aligning;
+}
+
+footer img {
+    width: 15vw;
+}
+
+.login-container {
+    margin-top: 10%;
+    text-align: $text_align;
+}
+
+.login {
+    display: inline-block;
+    width: 33%;
+    border: 3px solid rgba(244, 241, 241, .7);
+    padding-bottom: 5%;
+    padding-top: 10%;
+}
+
+.login h2 {
+    font-size: 2em;
+    color: #007bff;
+    position: $rel_position;
+    bottom: 10vh;
+}
+
+.card {
+    margin: 8% auto;
+    text-align: $text_align;
+    width: 50%;
+}
+
+.nav-item {
+    margin-right: 15%;
+}
+
+.navbar-nav {
+    margin-right: 12%;
+}
+
+.home-img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.books-middle-container {
+    text-align: $text_align;
+    width: 100%;
+}
+
+.books-img-container {
+    width: 50%;
+    margin: 7% auto;
+}
+
+.book-img {
+    width:100%;
+    height:100%;
+}
+
+.middle-container {
+    height: 70vh;
+    width: 100%;
+}
+
+#eigen_table table {
+    width: 70%;
+    height: 80%;
+    object-fit: cover;
+    opacity: 80%;
+}
+
+#eigen_table p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+.check {
+    @extend %width_icons;
+}
+
+.warning{
+    @extend %width_icons;
+}
+
+.uncheck{
+    @extend %width_icons;
+}
+
+footer {
+    position: $rel_position;
+    bottom: 25vh;
+    display: flex;
+    width: 100%;
+}
+
+.form-row {
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.login_creds {
+    width: 70%;
+    margin: $center_margin;
+}
+
+.register-form{
+    margin-left: 15%;
+    margin-top: 5%;
+    width: 70%;
+}
+
+.card-img-top {
+    max-width: 100%;
+    max-height: 55vh;
+    margin: auto;
+}
+
+.row {
+    align-items: center;
+    justify-content: center;
+}
+
+footer button {
+    width: 75%;
+    height: 6em;
+}
+
+footer img {
+    width: 18em;
+    margin-left: 40%;
+}
+
+.list-group {
+    width: 50%;
+    margin: $center_margin $center_margin 5% $center_margin;
+    position: $rel_position;
+    bottom: 10vh;
+}
+
+#no-book {
+    position: $rel_position;
+    bottom: 10vh;
+    width: 50vw;
+    margin: $center_margin;
+}
+
+#bookinfo {
+    margin: 10% $center_margin;
+    width: 40%
+}
+
+#bookreviews {
+    margin: $center_margin;
+    width: 40%;
+    text_align: $text_align;
+}
+
+.rating-container {
+    margin: auto;
+    text-align: center;
+    position: $rel_position;
+    bottom: 10vh;
+}
+
+// NOTICE: Rating plug-in, all rights reserved: https://gist.github.com/blairanderson/7f9d1c08345c6573e09edaa1f7316fa1 //
+.rating {
+    text-align: center;
+    position: relative;
+    right: 45%;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+// Endof: Rating plug-in
+
+.search-text {
+    position: $rel_position;
+    bottom: 5vh;
+    margin-bottom: 5%;
+}
+
+.textarea {
+    margin: 3% $center_margin;
+}
+
+.label_review {
+    margin-top: 3%;
+}
+
+.error-message {
+    font-size: 1.2em;
+    color: red;
+}
+
+.alert {
+ text-align: $text_align;
+}
+
+/* Width media queries */
+@media only screen and (max-width: 1200px) {
+    
+    #eigen_table p {
+        font-size: 1.2em;
+    }
+
+    footer {
+        text-align: center;
+    }
+    
+    footer img {
+        width: 15em;
+    }
+
+    #no-book {
+        bottom: 5vh;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .feature-container {
+        margin-top: 15%;
+    }
+
+    #eigen_table p {
+        font-size: 1.1em;
+        color: white;
+    }
+
+    footer button {
+        width: 12em;
+        height: 5em;
+    }
+    
+    footer img {
+        width: 13em;
+        margin-left: 20%;
+    }
+
+    .login h2 {
+        font-size: 1.5em;
+        bottom: 2vh;
+    }
+
+    .login-creds {
+        width: 70%;
+    }
+
+     #no-book {
+        top: 0vh;
+        font-size: 0.9em;
+    }
+
+    .search-text {
+        bottom: 0vh;
+        margin-bottom: 5%;
+    }
+
+    .list-group {
+        bottom: 0vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    #eigen_table {
+        margin-left: 5%;
+    }
+
+    #eigen_table p {
+        font-weight: 700;
+    }
+
+    .login-container {
+        margin-top: 25%;
+    }
+    
+    footer img {
+        width: 10em;
+    }
+
+    footer button {
+        width: 8em;
+        height: 3em;
+    }
+
+    #bookinfo {
+        margin: 15% 0 0 0;
+        width: 100%
+    }
+
+    #bookreviews {
+        margin: 10% $center_margin;
+        width: 60%;
+    }
+    .rating-container {
+        top: 1vh;
+    }
+
+    .rating {
+        right: 30%;
+    }
+
+    .label_review {
+        margin-top: 8%;
+    }
+
+    .error-message {
+        font-size: 0.75em;
+    }
+
+    #no-book {
+        top: 10vh;
+    }
+
+    .search-text {
+        top: 10vh;
+        margin-bottom: 5%;
+    }
+
+    .list-group {
+        top: 10vh;
+        bottom: 0vh;
+    }
+
+    .books-img-container {
+        height: 35vh;
+        margin-top: 15%;
+        width: 60%;
+    }
+
+    .reviews-container {
+        text-align: $text_align;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    #last-col {
+        margin-bottom: 5%;
+        margin-right: 10%;
+    }
+
+    .table-key, .table-value {
+        font-size: 0.9em;
+    }
+
+    .search-text {
+        top: 15vh;
+        margin-bottom: 5%;
+    }
+
+    .list-group {
+        top: 15vh;
+     }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .card {
+        margin: 25% auto;
+    }
+
+    .card-title {
+        font-size: 1em;
+    }
+
+    .card-text {
+        font-size: 0.8em;
+    }
+
+    .list-group-item {
+        font-size: 0.8em;
+    }
+
+    footer img {
+        margin: auto;
+    }
+
+    #last-col {
+        margin-left: 15%;
+    }
+}
+
+/* Height media-queries */
+@media only screen and (max-height: 380px) and (max-width: 600px){
+    
+    #eigen_table {
+        bottom: auto;
+    }
+
+    #eigen_table table {
+        margin-top: 25%;
+        width: 60vw;
+    }
+
+    #eigen_table p {
+        color: rgb(85, 85, 85);
+        opacity: 85%;
+        margin-top: 20%;
+    }
+
+    footer {
+        top: 12em;
+    }
+}
+
+@media only screen and (max-height: 350px) and (min-width: 600px) {
+    
+    #eigen_table {
+        bottom: 12em;
+    }
+
+    #last-col {
+        padding: auto;
+        margin: auto;
+    }
+}
